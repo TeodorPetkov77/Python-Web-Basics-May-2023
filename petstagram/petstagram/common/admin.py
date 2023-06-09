@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from petstagram.common.models import Like, Comment
+
+admin.site.register(Comment)
+admin.site.register(Like)
