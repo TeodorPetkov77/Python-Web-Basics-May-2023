@@ -60,7 +60,7 @@ def edit_recipe(request, pk):
 def details_recipe(request, pk):
     recipe = Recipe.objects.get(pk=pk)
     photo = recipe.image_url
-    ingredients = [ingred.strip() for ingred in recipe.ingredients.split(",")]
+    ingredients = [ingred.strip() for ingred in recipe.ingredients.split(",") if ingred]
     description = recipe.description
 
     context = {

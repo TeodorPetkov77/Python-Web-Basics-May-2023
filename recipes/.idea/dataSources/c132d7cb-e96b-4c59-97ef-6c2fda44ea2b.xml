@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Django default">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
+    <root id="1">
+      <ServerVersion>15.3</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="postgres"/>
+    <database id="3" parent="1" name="template1"/>
+    <database id="4" parent="1" name="template0"/>
+    <database id="5" parent="1" name="database_practice"/>
+    <database id="6" parent="1" name="game_bar"/>
+    <database id="7" parent="1" name="tasks_db"/>
+    <database id="8" parent="1" name="recipes_database">
+      <Current>1</Current>
+    </database>
+    <database id="9" parent="1" name="petstagram_database"/>
+    <schema id="10" parent="8" name="information_schema"/>
+    <schema id="11" parent="8" name="pg_catalog"/>
+    <schema id="12" parent="8" name="public">
+      <Current>1</Current>
+    </schema>
+  </database-model>
+</dataSource>
