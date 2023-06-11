@@ -70,7 +70,7 @@ def pet_delete(request, username, pet_slug):
 
 def pet_details(request, username, pet_slug):
     pet = Pet.objects.get(slug=pet_slug)
-    all_photos = reversed(pet.photo_set.all())
+    all_photos = pet.photo_set.all().order_by('-id')
     comment_form = CommentForm()
     context = {
         'pet': pet,

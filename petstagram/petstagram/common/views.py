@@ -7,7 +7,7 @@ from petstagram.photos.models import Photo
 
 
 def home_page(request):
-    all_photos = Photo.objects.all()
+    all_photos = Photo.objects.all().order_by('-id')
     comment_form = CommentForm()
     search_form = SearchForm()
 
