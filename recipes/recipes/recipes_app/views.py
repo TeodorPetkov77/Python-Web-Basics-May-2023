@@ -5,7 +5,7 @@ from recipes.recipes_app.models import Recipe
 
 
 def index(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.all().order_by('-id')
     context = {
         'recipes': recipes
     }
