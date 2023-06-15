@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- edit plant form -->
+    <section id="create-page" class="auth">
+        <form method="post">
+            <div class="container">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn submit" type="submit" value="Edit Plant">
+            </div>
+        </form>
+    </section>
+
+{% endblock %}
