@@ -1,24 +1,5 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Starts Main Section -->
-<main>
-
-    <div class="container">
-        <div class="col-9">
-
-            <!-- Start Searchbar Form -->
-            <form class="searchbar" method="post">
-                {% csrf_token %}
-                {{ search_form }}
-                <button>
-                    <img src="{% static 'images/search.png' %}" height="18" alt="img2">
-                </button>
-            </form>
-            <!-- End Searchbar Form -->
-            {% for photo in all_photos %}
+{% for photo in all_photos %}
             <!-- Start Pet Photos Post Section -->
             <!-- Start First Pet Photo Post -->
             <div class="card">
@@ -38,16 +19,15 @@
                         </a>
                         <h3>
                             <!-- Link to User Profile Page -->
-                            <a href="#">
+                            <a href="{% url 'profile details' 1 %}">
                                 <!-- if user has first name and last name -->
                                 Teodor Petkov
                                 <!-- else -->
                                 <!-- show user username -->
                             </a>
                             <br>
-                            <!-- if the photo has location -->
                             {% if photo.location %}
-                                <span>{{ photo.location }}</span>
+                            <span>{{ photo.location }}</span>
                             {% endif %}
                         </h3>
                     </div>
@@ -66,33 +46,33 @@
                         <div class="left">
                             <!-- Start Like Button -->
                             <span class="heart">
-									<a href={% url 'like' photo.id %}>
+									<a href="{% url 'like' photo.id %}">
 										<!-- if user has liked the photo -->
                                         {% if photo.like_set.all %}
-                                            <svg style="color: red"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 width="24"
-                                                 height="24"
-                                                 fill="currentColor"
-                                                 class="bi bi-heart-fill"
-                                                 viewBox="0 0 16 16">
-                                                <!-- Coordinate path -->
-                                                <path fill-rule="evenodd"
-                                                      d="M8 1.314C12.438-3.248 23.534 4.735
-                                                      8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                                                      fill="red">
+                                        <svg style="color: red"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             width="24"
+                                             height="24"
+                                             fill="currentColor"
+                                             class="bi bi-heart-fill"
+                                             viewBox="0 0 16 16">
+                                            <!-- Coordinate path -->
+                                            <path fill-rule="evenodd"
+                                                  d="M8 1.314C12.438-3.248 23.534 4.735
+                                                  8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                                                  fill="red">
 
-                                                </path>
-                                            </svg>
+                                            </path>
+                                        </svg>
+                                        <!-- else -->
                                         {% else %}
-                                            <!-- else -->
-                                            <svg aria-label="Like"
-                                                 color="#262626"
-                                                 fill="#262626"
-                                                 height="24"
-                                                 role="img"
-                                                 viewBox="0 0 48 48"
-                                                 width="24">
+                                        <svg aria-label="Like"
+                                             color="#262626"
+                                             fill="#262626"
+                                             height="24"
+                                             role="img"
+                                             viewBox="0 0 48 48"
+                                             width="24">
                                         {% endif %}
                                         <!-- Coordinate path -->
                                         <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4
@@ -137,16 +117,15 @@
 
 
                     <!-- Start Tagged Pets -->
-                    <!-- Link to First Tagged Pet Details Page-->
                     {% for pet in photo.tagged_pets.all %}
-                        <a href="{% url 'pet details' "username" pet.slug %}">
-                            <p class="message">
-                                <b>{{ pet.name }}</b>
-                            </p>
-                        </a>
+                    <!-- Link to First Tagged Pet Details Page-->
+                    <a href="{% url 'pet details' 'username' pet.slug %}">
+                        <p class="message">
+                            <b>{{ pet.name }}</b>
+                        </p>
+                    </a>
                     {% endfor %}
 
-                    <!-- End Tagged Pets -->
 
                     <!-- Link to Photo Details Page -->
                     <a href="{% url 'photo details' photo.pk %}">
@@ -165,8 +144,10 @@
                         </div>
                         <!-- Start Add Comments Form -->
                         <form method="post" action="{% url 'comment' photo.id %}">
+
                             {% csrf_token %}
                             {{ comment_form }}
+
                             <button type="submit">Post</button>
                         </form>
                         <!-- End Add Comments Form -->
@@ -178,14 +159,7 @@
             </div>
             <!-- End First Pet Photo Post -->
 
+
+
             <!-- End Pet Photos Post Section -->
-        {% endfor %}
-        </div>
-    </div>
-
-</main>
-<!-- End Main Section -->
-
-
-</body>
-</html>
+{% endfor %}

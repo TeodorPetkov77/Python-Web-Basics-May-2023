@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
 <!-- Starts Main Section -->
 <main>
@@ -24,11 +21,11 @@
                         <!-- Pet Name -->
                         <p>{{ pet.name }}</p>
                         <!-- Pet Edit Button -->
-                        <a href="{% url 'pet edit' "username" pet.slug %}">
+                        <a href="{% url 'pet edit' 'username' pet.slug %}">
                             <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
                         </a>
                         <!-- Pet Delete Button -->
-                        <a href="{% url 'pet delete' "username" pet.slug %}">
+                        <a href="{% url 'pet delete' 'username' pet.slug %}">
                             <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
                         </a>
                     </div>
@@ -42,10 +39,18 @@
         </div>
         <!-- End Pet Personal Data Section -->
 
-        {% if all_photos %}
-            {% include 'common/pet-posts.html' %}
+        <div class="pet-posts">
 
+            <!-- IF Photos Start Pet Photos Post Section -->
+
+        {% if all_photos %}
+
+            {% include 'common/pets-posts.html' %}
+
+           <!-- IF Photos End Pet Photos Post Section -->
         {% else %}
+
+            <!-- IF NOT Photos Show No Post Image -->
             <img class="no-posts" src="{% static 'images/no_posts.png' %}" alt="no posts image">
 
         {% endif %}
@@ -54,9 +59,5 @@
     </div>
 </main>
 <!-- End Main Section -->
+
 {% endblock %}
-
-
-
-</body>
-</html>

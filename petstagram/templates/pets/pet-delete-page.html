@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
 <!-- Starts Main Section -->
 <main>
@@ -12,8 +9,10 @@
         <h2>Delete pet</h2>
         <!-- Starts Delete Pet Form -->
         <form method="post">
+
             {% csrf_token %}
             {{ form.as_p }}
+
             <!-- Delete Pet Button -->
             <button class="delete-btn" type="submit">Delete</button>
             <!-- Go Back Button -->
@@ -27,8 +26,4 @@
 </main>
 <!-- End Main Section -->
 
-
 {% endblock %}
-
-</body>
-</html>

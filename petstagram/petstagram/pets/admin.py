@@ -4,7 +4,7 @@ from petstagram.pets.models import Pet
 
 
 class PetAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
+    list_display = ('name', 'slug')
 
 
 admin.site.register(Pet, PetAdmin)

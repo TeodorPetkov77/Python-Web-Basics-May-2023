@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
-
-<!DOCTYPE html>
-<html lang="en">
 {% load static %}
+{% block content %}
 
 <!-- Starts Main Section -->
 <main>
@@ -12,8 +9,10 @@
         <h2>Edit Pet</h2>
         <!-- Start Edit Pet From -->
         <form method="post">
+
             {% csrf_token %}
             {{ form.as_p }}
+
             <!-- Edit Pet Button -->
             <button class="edit-btn" type="submit">Edit</button>
         </form>
@@ -25,8 +24,4 @@
 </main>
 <!-- End Main Section -->
 
-
 {% endblock %}
-
-</body>
-</html>

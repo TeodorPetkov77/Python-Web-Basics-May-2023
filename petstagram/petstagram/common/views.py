@@ -16,17 +16,16 @@ def home_page(request):
         if search_form.is_valid():
             all_photos = all_photos.filter(
                 tagged_pets__name__contains=
-                search_form.
-                cleaned_data['pet_name']
+                search_form.cleaned_data['pet_name']
             )
 
     context = {
-        "all_photos": all_photos,
-        "comment_form": comment_form,
-        "search_form": search_form,
+        'all_photos': all_photos,
+        'comment_form': comment_form,
+        'search_form': search_form,
     }
 
-    return render(request, 'common/home-page.html', context=context)
+    return render(request, 'common/home-page.html', context)
 
 
 def like_functionality(request, photo_id):
@@ -52,7 +51,6 @@ def add_comment(request, photo_id):
     if request.method == 'POST':
         photo = Photo.objects.get(id=photo_id)
         form = CommentForm(request.POST)
-
         if form.is_valid():
             comment = form.save(commit=False)
             comment.to_photo = photo

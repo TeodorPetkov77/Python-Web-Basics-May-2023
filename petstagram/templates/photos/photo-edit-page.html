@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
 <!-- Starts Main Section -->
 <main>
@@ -14,6 +11,7 @@
 
         <!-- Starts Edit Photo Form -->
         <form method="post">
+
             {% csrf_token %}
             {{ form.as_p }}
 
@@ -29,6 +27,3 @@
 <!-- End Main Section -->
 
 {% endblock %}
-
-</body>
-</html>

@@ -5,8 +5,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('petstagram.common.url')),
-    path('accounts/', include('petstagram.accounts.url')),
-    path('pets/', include('petstagram.pets.url')),
-    path('photos/', include('petstagram.photos.url'))
+    path('', include('petstagram.common.urls')),
+    path('accounts/', include('petstagram.accounts.urls')),
+    path('pets/', include('petstagram.pets.urls')),
+    path('photos/', include('petstagram.photos.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
